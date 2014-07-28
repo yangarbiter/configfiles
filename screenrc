@@ -1,0 +1,4 @@
+caption always "%{= ky}%H  %{= kc}%-Lw%{= br}%n %t%{= kc}%+Lw %=%{= g}%l"
+shell "/bin/bash"
+
+defscrollback 10000
