@@ -1,7 +1,8 @@
-all: vimrc clone installBundle git_diff color syntax cscope
+all: vimrc clone installBundle git_diff color
 	cp ./vimrc ~/.vimrc
 	cp ./tmux.conf ~/.tmux.conf
 	mkdir -p ~/.vim/colors/
+	cp scheme.vim ~/.vim/colors/
 
 installBundle:
 	vim +BundleInstall +qall
@@ -14,7 +15,9 @@ color:
 	mkdir -p ~/.vim/colors/
 	mv 256-jungle.vim ~/.vim/colors/
 
+#not working now
 syntax:
+	cp scheme.vim ~/.vim/colors/
 	tar -zxf gtk-vim-syntax.tar.gz
 	mv -p gtk-vim-syntax/ ~/.vim/after/syntax/c.vim
 
