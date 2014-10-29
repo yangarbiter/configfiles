@@ -6,8 +6,8 @@ set fileencodings=utf-8
 
 set hlsearch
 set background=dark
-set history=700
-set undolevels=700
+set history=1000
+set undolevels=1000
 set tabstop=4
 set shiftwidth=4
 set nu
@@ -91,18 +91,17 @@ autocmd Filetype python setlocal expandtab shiftwidth=4 softtabstop=4
 "===================Plugins=========================
 set nocompatible
 
-"filetype off
 filetype on
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
+" let Vundle manage Vundle required!
+Bundle 'gmarik/vundle'
+
+"Bundle 'vim-scripts/taglist.vim'
 Bundle 'majutsushi/tagbar'
 
-Bundle 'gmarik/vundle'
-"Bundle 'vim-scripts/taglist.vim'
 Bundle 'scrooloose/nerdtree'
 
 Bundle 'vim-scripts/vimgdb'
@@ -122,7 +121,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 "=============LargeFile=====================
 let g:LargeFile = 1000
-
 
 " The bundles you install will be listed here
 filetype plugin indent on
@@ -174,11 +172,15 @@ let g:jedi#show_call_signatures = "1"
 "==============taglist======================
 "nnoremap <F3> :TlistToggle<CR>
 
-"==============taglist======================
+"==============tagbar======================
 nnoremap <F3> :TagbarToggle<CR>
 
 "==============nerdtree=====================
 map <F2> :NERDTreeToggle <cr>
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
+let NERDTreeShowBookmarks=1
 
 "navigate through tabs
 "map <tab> :tabn <cr>
@@ -214,16 +216,17 @@ inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 "Run Python Script
 autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead *.py nmap <F5> :update <CR> :!python %<CR>
+autocmd BufRead *.py nmap <F5> :!python2 %<CR>
+autocmd BufRead *.py nmap <F6> :!python3 %<CR>
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py set nowrap
 autocmd BufRead *.py set go+=b
 
 "Run php Script
-autocmd BufRead *.php nmap <F5> :update <CR> :!php %<CR>
-
-"Run nodejs Script
-autocmd BufRead *.js nmap <F5> :update <CR> :!node %<CR>
+autocmd BufRead *.php nmap <F5> :!php %<CR>
 
 "Run bash Script
-autocmd BufRead *.sh nmap <F5> :update <CR> :!bash %<CR>
+autocmd BufRead *.sh nmap <F5> :!bash %<CR>
+
+"Turn markdown to html
+autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
