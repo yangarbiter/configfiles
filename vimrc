@@ -75,6 +75,7 @@ endfunction
 
 highlight Comment ctermfg=darkcyan
 
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown"
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -85,6 +86,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd Filetype html setlocal shiftwidth=2 tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
+autocmd Filetype markdown setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd Filetype python setlocal expandtab shiftwidth=4 softtabstop=4
 
 
@@ -115,6 +117,9 @@ Bundle "mattn/emmet-vim"
 "https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 
 Bundle 'bling/vim-airline'
+
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
@@ -181,6 +186,24 @@ let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
+
+"=============vim-markdown=================
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_no_default_key_mappings=1
+let g:vim_markdown_math=1
+let g:vim_markdown_frontmatter=1
+"## Mappings
+"The following work on normal and visual modes:
+"- `]]`: go to next header. `<Plug>(Markdown_MoveToNextHeader)`
+"- `[[`: go to previous header. Contrast with `]c`.
+"`<Plug>(Markdown_MoveToPreviousHeader)`
+"- `][`: go to next sibling header if any.
+"`<Plug>(Markdown_MoveToNextSiblingHeader)`
+"- `[]`: go to previous sibling header if any.
+"`<Plug>(Markdown_MoveToPreviousSiblingHeader)`
+"- `]c`: go to Current header. `<Plug>(Markdown_MoveToCurHeader)`
+"- `]u`: go to parent header (Up). `<Plug>(Markdown_MoveToParentHeader)`
+
 
 "navigate through tabs
 "map <tab> :tabn <cr>
