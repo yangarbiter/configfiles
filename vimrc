@@ -39,6 +39,10 @@ endfunction
 highlight Pmenu ctermbg=Gray ctermfg=Black
 highlight PmenuSel ctermbg=Green ctermfg=Black
 
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+"show trailing whitespace
+match ExtraWhitespace /\s\+$/
+
 let $CC = "gcc"
 let $CXX = "g++"
 let $CFLAGS = "-Wall"
