@@ -1,6 +1,10 @@
 syntax on
 colorscheme scheme
 
+"set 80 line
+set tw=80
+set cc=+1
+
 set encoding=utf-8
 set fileencodings=utf-8
 
@@ -14,6 +18,7 @@ set nu
 set ru
 set smartindent
 set hlsearch
+set wrap
 
 " from http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 function! Smart_TabComplete()
@@ -236,9 +241,33 @@ nmap <S-tab> V<
 vmap <tab> >gv
 vmap <S-tab> <gv
 
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 "source ~/.vim/plugin/cscope_maps.vim
 
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+
+"function! init()
+"	let file_suffix = expand("%:e")
+"	if file_suffix == "c"
+"		nmap <F5> :!${CC} ${CFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE} %<CR>
+"		cg ${HOME}${ERRFILE}
+"	elseif index(['cpp', 'CPP', 'cp', 'cxx', 'cc', 'c++'], file_suffix) >= 0
+"		nmap <F5> :!${CXX} ${CFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE} %<CR>
+"		cg ${HOME}${ERRFILE}
+"	elseif file_suffix == "py"
+"		set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+"		nmap <F5> :!python2 %<CR>
+"		nmap <F6> :!python3 %<CR>
+"		set tabstop=4
+"	else
+"		echo "This file has an UNKNOWN SUFFIX!"
+"	endif
+"endfunction
 
 "Run Python Script
 autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
@@ -246,7 +275,6 @@ autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^
 autocmd BufRead *.py nmap <F5> :!python2 %<CR>
 autocmd BufRead *.py nmap <F6> :!python3 %<CR>
 autocmd BufRead *.py set tabstop=4
-autocmd BufRead *.py set nowrap
 autocmd BufRead *.py set go+=b
 
 "Run php Script
