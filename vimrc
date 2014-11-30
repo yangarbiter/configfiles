@@ -247,6 +247,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+"A trick when forgot to sudo before editing a file that requies root
+cmap w!! w !sudo tee % >/dev/null
+
 "source ~/.vim/plugin/cscope_maps.vim
 
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
