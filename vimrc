@@ -43,10 +43,14 @@ function! Smart_TabComplete()
 endfunction
 highlight Pmenu ctermbg=Gray ctermfg=Black
 highlight PmenuSel ctermbg=Green ctermfg=Black
-
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 "show trailing whitespace
 match ExtraWhitespace /\s\+$/
+"Show whitespace
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"au InsertLeave * match ExtraWhitespace /\s\+$/
+highlight Comment ctermfg=darkcyan
+
 
 let $CC = "gcc"
 let $CXX = "g++"
@@ -58,7 +62,7 @@ function! SingleCompile()
 	let file_suffix = expand("%:e")
 	if file_suffix == "c"
 		!${CC} ${CFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE}
-		cg ${HOME}${ERRFILE}	
+		cg ${HOME}${ERRFILE}
 	elseif file_suffix == "cpp"
 		!${CXX} ${CXXFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE}
 		cg ${HOME}${ERRFILE}
@@ -76,13 +80,6 @@ function! ToggleQuickFixWindow()
 		let g:quick_fix_window_on = 1
 	endif
 endfunction
-
-
-"Show whitespace
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"au InsertLeave * match ExtraWhitespace /\s\+$/
-
-highlight Comment ctermfg=darkcyan
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown"
 
@@ -279,6 +276,9 @@ autocmd BufRead *.py nmap <F5> :!python2 %<CR>
 autocmd BufRead *.py nmap <F6> :!python3 %<CR>
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py set go+=b
+
+"Run lua script
+autocmd BufRead *.lua nmap <F5> :!lua %<CR>
 
 "Run php Script
 autocmd BufRead *.php nmap <F5> :!php %<CR>
