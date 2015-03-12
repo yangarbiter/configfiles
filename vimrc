@@ -81,6 +81,8 @@ function! ToggleQuickFixWindow()
 	endif
 endfunction
 
+set expandtab
+
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown"
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -92,8 +94,8 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd Filetype html setlocal shiftwidth=2 tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
-autocmd Filetype markdown setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd Filetype python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd Filetype markdown setlocal shiftwidth=4 softtabstop=4
+autocmd Filetype python setlocal shiftwidth=4 softtabstop=4
 
 
 "===================Plugins=========================
@@ -285,6 +287,9 @@ autocmd BufRead *.php nmap <F5> :!php %<CR>
 
 "Run bash Script
 autocmd BufRead *.sh nmap <F5> :!bash %<CR>
+
+"Run haskell Script
+autocmd BufRead *.hs nmap <F5> :!runghc %<CR>
 
 "Turn markdown to html
 autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
