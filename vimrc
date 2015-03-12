@@ -1,5 +1,6 @@
 syntax on
 colorscheme scheme
+filetype on
 
 "set 80 line
 set tw=80
@@ -41,6 +42,7 @@ function! Smart_TabComplete()
     return "\<C-X>\<C-O>"                         " plugin matching
   endif
 endfunction
+
 highlight Pmenu ctermbg=Gray ctermfg=Black
 highlight PmenuSel ctermbg=Green ctermfg=Black
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
@@ -50,7 +52,6 @@ match ExtraWhitespace /\s\+$/
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 "au InsertLeave * match ExtraWhitespace /\s\+$/
 highlight Comment ctermfg=darkcyan
-
 
 let $CC = "gcc"
 let $CXX = "g++"
@@ -96,12 +97,11 @@ autocmd Filetype html setlocal shiftwidth=2 tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
 autocmd Filetype markdown setlocal shiftwidth=4 softtabstop=4
 autocmd Filetype python setlocal shiftwidth=4 softtabstop=4
+autocmd Filetype lua setlocal shiftwidth=3 softtabstop=3
 
 
 "===================Plugins=========================
 set nocompatible
-
-filetype on
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -126,8 +126,14 @@ Bundle "mattn/emmet-vim"
 
 Bundle 'bling/vim-airline'
 
+"dependency for vim-lua-ftplugin
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-lua-ftplugin'
+
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
+
+"Bundle 'ervandew/supertab'
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
@@ -216,9 +222,9 @@ let g:vim_markdown_frontmatter=1
 "navigate through tabs
 "map <tab> :tabn <cr>
 "nnoremap <C-tab> gt
-"nnoremap <C-S-tab> gT 
+"nnoremap <C-S-tab> gT
 "inoremap <C-tab> gt
-"inoremap <C-S-tab> gT 
+"inoremap <C-S-tab> gT
 
 map <F9> :make exec<cr>
 "map <ScrollWheelDown> <C-U>
@@ -245,6 +251,14 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+"====================vim-lua-ftplugin=====================
+let g:lua_check_globals = 1
+let g:lua_check_syntax = 1
+let g:lua_complete_omni = 1
+let g:lua_define_omnifunc = 1
+let g:lua_safe_omni_modules = 1
+let g:lua_define_completefunc = 1
 
 "A trick when forgot to sudo before editing a file that requies root
 cmap w!! w !sudo tee % >/dev/null
