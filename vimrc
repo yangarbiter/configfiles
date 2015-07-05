@@ -102,6 +102,7 @@ autocmd Filetype lua setlocal shiftwidth=3 softtabstop=3
 
 "===================Plugins=========================
 set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -134,6 +135,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 
 "Bundle 'ervandew/supertab'
+
+Bundle 'JuliaLang/julia-vim'
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
@@ -218,6 +221,15 @@ let g:vim_markdown_frontmatter=1
 "- `]c`: go to Current header. `<Plug>(Markdown_MoveToCurHeader)`
 "- `]u`: go to parent header (Up). `<Plug>(Markdown_MoveToParentHeader)`
 
+"=============julia-vim====================
+"https://github.com/JuliaLang/julia-vim
+noremap <expr> <F8> LaTeXtoUnicode#Toggle()
+inoremap <expr> <F8> LaTeXtoUnicode#Toggle()
+let g:latex_to_unicode_file_types=".*"
+let g:latex_to_unicode_auto = 1
+let g:julia_blocks=1
+let g:latex_to_unicode_eager = 0
+runtime macros/matchit.vim
 
 "navigate through tabs
 "map <tab> :tabn <cr>
@@ -307,3 +319,6 @@ autocmd BufRead *.hs nmap <F5> :!runghc %<CR>
 
 "Turn markdown to html
 autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
+
+"Run bash Script
+autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
