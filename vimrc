@@ -117,7 +117,7 @@ Bundle 'scrooloose/nerdtree'
 
 Bundle 'vim-scripts/vimgdb'
 
-"Bundle 'klen/python-mode'
+Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
 
 Bundle 'LargeFile'
@@ -158,7 +158,6 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 
-
 "==============vim-gdb===============
 "List of default key mappings:
 "    CTRL-Z  send an interrupt to GDB and the program it is running
@@ -191,11 +190,27 @@ let g:jedi#show_call_signatures = "1"
 "            variables window
 
 
+"==============pymode===============
+autocmd FileType python let g:pymode_lint = 1
+autocmd FileType python let g:pymode_lint_on_write = 1
+autocmd FileType python let g:pymode_lint_cwindow = 1
+autocmd FileType python let g:pymode_lint_checkers = ['pylint', 'pep8']
+autocmd FileType python nmap <F3> :PymodeLintToggle<CR>
+
+autocmd FileType python let g:pymode_breakpoint = 1
+autocmd FileType python let g:pymode_breakpoint_bind = '<leader>b'
+
+autocmd FileType python let g:pymode_virtualenv = 1
+
+let g:pymode_rope = 0
+
+
 "==============taglist======================
 "nnoremap <F3> :TlistToggle<CR>
 
 "==============tagbar======================
-nnoremap <F3> :TagbarToggle<CR>
+autocmd FileType c nmap <F3> :TagbarToggle<CR>
+autocmd FileType c++ nmap <F3> :TagbarToggle<CR>
 
 "==============nerdtree=====================
 map <F2> :NERDTreeToggle <cr>
