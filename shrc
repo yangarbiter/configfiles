@@ -1,0 +1,51 @@
+# This file should contain aliases, shell variables, and functios,
+# those cannot be passed to child process.
+#
+# Ref to .profile for details
+#
+
+## Standard Aliases
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias vi=vim
+alias telnet='telnet -8'
+os=${OSTYPE/[^a-z]*/}
+
+case "$os" in
+"freebsd")
+	alias ls='gnuls --color --show-control-chars -F'
+	;;
+"linux")
+	alias ls='ls --color --show-control-chars -F'
+	;;
+"solaris")
+	alias ls='ls --color --show-control-chars -F'
+	alias ping="ping -s"
+	;;
+esac
+
+## Local aliases
+#
+alias screen='screen -D -R'
+
+## Extra aliases
+#
+alias grep='egrep --color=auto'
+alias talk=ytalk
+
+## Shell style
+#
+if [ $SHELL = "/bin/sh" ]; then
+  if [ "$WINDOW" != "" ]; then
+    export PS1="$LOGNAME@`hostname` [W$WINDOW] "
+  else 
+    export PS1="$LOGNAME@`hostname`$ "
+  fi
+else 
+  if [ "$WINDOW" != "" ]; then
+    export PS1="$LOGNAME@\h {\w} [W$WINDOW] "
+  else
+    export PS1="\u@\h [\w] "
+  fi
+fi
