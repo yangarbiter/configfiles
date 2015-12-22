@@ -1,4 +1,37 @@
+[alias]
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# View the current working tree status using the short format
+	s = status -s
+
+    # Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
 [diff]
-  external = ~/.git_diff_wrapper
+	external = ~/git_diff_wrapper
+
 [pager]
-  diff =
+	diff =
+
+[user]
+	name = yangarbiter
+	email = yangarbiter@gmail.com
+
+[color]
+	ui = auto
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green

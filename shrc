@@ -18,6 +18,8 @@ case "$os" in
 	;;
 "linux")
 	alias ls='ls --color --show-control-chars -F'
+	alias l='ls --color --show-control-chars -F'
+	alias ll='ls --color --show-control-chars -F -al'
 	;;
 "solaris")
 	alias ls='ls --color --show-control-chars -F'

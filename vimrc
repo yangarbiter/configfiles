@@ -191,7 +191,7 @@ let g:jedi#show_call_signatures = "1"
 
 
 "==============pymode===============
-autocmd FileType python let g:pymode_lint = 1
+autocmd FileType python let g:pymode_lint = 0
 autocmd FileType python let g:pymode_lint_on_write = 1
 autocmd FileType python let g:pymode_lint_cwindow = 1
 autocmd FileType python let g:pymode_lint_checkers = ['pylint', 'pep8']
@@ -337,3 +337,10 @@ autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
 
 "Run bash Script
 autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
+
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif
+
+set rtp+=~/.fzf
