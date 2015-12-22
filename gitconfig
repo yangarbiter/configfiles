@@ -16,12 +16,17 @@
 [diff]
 	external = ~/git_diff_wrapper
 
-[pager]
-	diff =
-
 [user]
 	name = yangarbiter
 	email = yangarbiter@gmail.com
+
+
+[push]
+
+	# Use the Git 1.x.x default to avoid errors on machines with old Git
+	# installations. To use `simple` instead, add this to your `~/.extra` file:
+	# `git config --global push.default simple`. See http://git.io/mMah-w.
+	default = matching
 
 [color]
 	ui = auto
