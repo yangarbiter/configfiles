@@ -6,7 +6,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -e ~/.bashrc ] ; then mv ~/.bashrc ~/.bashrc_local; fi
 ln -sv ${BASEDIR}/bashrc ~/.bashrc
 if [ -e ~/.shrc ] ; then mv ~/.shrc ~/.shrc_local; fi
-ln -sv ${BASEDIR}/shrc/ ~/.shrc
+ln -sv ${BASEDIR}/shrc ~/.shrc
 
 # vim
 if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
@@ -17,6 +17,7 @@ ln -sv ${BASEDIR}/vim/ ~/.vim
 # ln -sv ${BASEDIR}/zshrc ~/.zshrc
 
 # git
+if [ -e ~/gitconfig ] ; then mv ~/.gitconfig ~/.gitconfig_local; fi
 ln -sv ${BASEDIR}/gitconfig ~/.gitconfig
 ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
 
