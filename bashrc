@@ -2,7 +2,11 @@
 ## BASH: this will run on each non-login and interactive shell.
 . $HOME/.shrc
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]\[\033[01;33m\]@\h\[\033[00m\]\[\033[01;34m\]<\A>\[\033[00m\] [\w] '
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.bashrc_local ] && source ~/.bashrc_local
+
+GIT_PS1_SHOWDIRTYSTATE=1
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]˘\033[01;33m\]@\h\[\033[00m\]\[\033[01;34m\]<\A>\[\033[00m\] $(__git_ps1 "\[\e[1;35m\](%s)\[\e[m\]") [\w] '
 
 
 # Usage: smartextract <file>
@@ -28,6 +32,3 @@ smartextract () {
     fi
 }
 alias e='smartextract'
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bashrc_local ] && source ~/.bashrc_local
