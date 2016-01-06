@@ -1,0 +1,28 @@
+
+alias j='jobs'
+alias hs='htop -u $USER'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias vi=vim
+alias telnet='telnet -8'
+
+os=${OSTYPE/[^a-z]*/}
+case "$os" in
+"freebsd")
+	alias ls='gnuls --color --show-control-chars -F'
+	;;
+"linux")
+	alias ls='ls --color --show-control-chars -F'
+	alias l='ls --color --show-control-chars -F'
+	alias ll='ls --color --show-control-chars -F -al'
+	;;
+"solaris")
+	alias ls='ls --color --show-control-chars -F'
+	alias ping="ping -s"
+	;;
+esac

@@ -1,12 +1,23 @@
 #!/bin/bash
 
+git submodule init
+git submodule update
+
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # terminal
 if [ -e ~/.bashrc ] ; then mv ~/.bashrc ~/.bashrc_local; fi
 ln -sv ${BASEDIR}/bashrc ~/.bashrc
+
 if [ -e ~/.shrc ] ; then mv ~/.shrc ~/.shrc_local; fi
 ln -sv ${BASEDIR}/shrc ~/.shrc
+
+if [ -e ~/.profile ] ; then mv ~/.profile ~/.profile_local; fi
+if [ -e ~/.bash_profile ] ; then mv ~/.bash_profile ~/.bash_profile_local; fi
+ln -sv ${BASEDIR}/.profile ~/.profile
+
+if [ -e ~/.alias ] ; then rm ~/.alias; fi
+ln -sv ${BASEDIR}/.alias ~/.alias
 
 # vim
 if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
