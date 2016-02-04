@@ -4,6 +4,7 @@ git submodule init
 git submodule update
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
 
 # terminal
 if [ -e ~/.bashrc ] ; then mv ~/.bashrc ~/.bashrc_local; fi
@@ -34,11 +35,9 @@ ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
 
 GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 wget $GIT_COMPLET_URL -O $BASEDIR
-echo ". $BASEDIR/git-completion.bash" >> bashrc
 
 GIT_PROMPT_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 wget $GIT_PROMPT_URL -O $BASEDIR/git-prompt.sh
-echo ". $BASEDIR/git-prompt.sh" >> bashrc
 
 # install vim extensions
 # wget http://vimcolorschemetest.googlecode.com/svn/colors/256-jungle.vim

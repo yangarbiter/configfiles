@@ -32,3 +32,7 @@ smartextract () {
     fi
 }
 alias e='smartextract'
+
+. $DOTFILE_BASEDIR/git-completion.bash
+. $DOTFILE_BASEDIR/git-prompt.sh
+. $DOTFILE_BASEDIR/z/z.sh

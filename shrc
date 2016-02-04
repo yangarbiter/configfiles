@@ -51,3 +51,5 @@ else
     export PS1="\u@\h [\w] "
   fi
 fi
+
+. ~/.env_vars.sh
