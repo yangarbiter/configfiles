@@ -1,0 +1,7 @@
+Cython
+numpy
+scipy
+scikit-learn
+h5py
+joblib
+ipython
