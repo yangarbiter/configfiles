@@ -1,4 +1,24 @@
-caption always "%{= ky}%H  %{= kc}%-Lw%{= br}%n %t%{= kc}%+Lw %=%{= g}%l"
-shell "/bin/bash"
+shell bash
+startup_message off
+vbell off
+
+# start from 1
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+
+term screen-256color
+
+# status bar 1
+#hardstatus off
+#hardstatus alwayslastline
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+
+# status bar 2
+hardstatus alwayslastline '%{= G}[ %{G}%H %{g}][%= %{= w}%?%-Lw%?%{= R}%n*%f %t%?%{= R}(%u)%?%{= w}%+Lw%?%= %{= g}][ %{y}Load: %l %{g}][%{B}%Y-%m-%d %{W}%c:%s %{g}]'
+
+#caption always "%{= ky}%H  %{= kc}%-Lw%{= br}%n %t%{= kc}%+Lw %=%{= g}%l"
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
 
 defscrollback 10000

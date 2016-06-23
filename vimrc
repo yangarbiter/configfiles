@@ -102,6 +102,7 @@ autocmd Filetype css setlocal shiftwidth=2 tabstop=2
 autocmd Filetype c setlocal shiftwidth=2 tabstop=2
 autocmd Filetype lua setlocal shiftwidth=3 softtabstop=3
 autocmd Filetype sh setlocal shiftwidth=2 tabstop=2
+autocmd Filetype scala setlocal shiftwidth=2 tabstop=2
 
 
 "===================Plugins=========================
@@ -141,6 +142,10 @@ Bundle 'plasticboy/vim-markdown'
 "Bundle 'ervandew/supertab'
 
 "Bundle 'JuliaLang/julia-vim'
+
+Bundle 'derekwyatt/vim-scala'
+" :SortScalaImports
+
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
@@ -342,9 +347,15 @@ autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
 "Run bash Script
 autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
 
+"Run scala Script
+autocmd BufRead *.scala nmap <F5> :update <CR> :!scala %<CR>
+
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
 
 set rtp+=~/.fzf
+
+" pretty print json
+" :%!python -m json.tool
