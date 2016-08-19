@@ -38,3 +38,6 @@ alias e='smartextract'
 . $DOTFILE_BASEDIR/z/z.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export GOPATH=~/gopkgs
+export PATH=$PATH:~/gopkgs/bin/

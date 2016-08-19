@@ -23,7 +23,7 @@ ln -sv ${BASEDIR}/.alias ~/.alias
 # vim
 if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
 ln -sv ${BASEDIR}/vimrc ~/.vimrc
-ln -sv ${BASEDIR}/vim/ ~/.vim
+ln -sv ${BASEDIR}/vim ~/.vim
 
 # zsh
 # ln -sv ${BASEDIR}/zshrc ~/.zshrc

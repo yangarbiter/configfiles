@@ -122,12 +122,12 @@ Bundle 'scrooloose/nerdtree'
 
 "Bundle 'vim-scripts/vimgdb'
 
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
 
-Bundle 'LargeFile'
+"Bundle 'LargeFile'
 
-Bundle "mattn/emmet-vim"
+"Bundle 'mattn/emmet-vim'
 "https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 
 Bundle 'bling/vim-airline'
@@ -136,8 +136,8 @@ Bundle 'bling/vim-airline'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-lua-ftplugin'
 
-Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown'
+"Bundle 'godlygeek/tabular'
+"Bundle 'plasticboy/vim-markdown'
 
 "Bundle 'ervandew/supertab'
 
@@ -145,7 +145,6 @@ Bundle 'plasticboy/vim-markdown'
 
 Bundle 'derekwyatt/vim-scala'
 " :SortScalaImports
-
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
