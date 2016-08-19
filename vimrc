@@ -93,11 +93,16 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd Filetype html setlocal shiftwidth=2 tabstop=2
-autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
+
 autocmd Filetype markdown setlocal shiftwidth=4 softtabstop=4
 autocmd Filetype python setlocal shiftwidth=4 softtabstop=4
+autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
+autocmd Filetype html setlocal shiftwidth=2 tabstop=2
+autocmd Filetype css setlocal shiftwidth=2 tabstop=2
+autocmd Filetype c setlocal shiftwidth=2 tabstop=2
 autocmd Filetype lua setlocal shiftwidth=3 softtabstop=3
+autocmd Filetype sh setlocal shiftwidth=2 tabstop=2
+autocmd Filetype scala setlocal shiftwidth=2 tabstop=2
 
 
 "===================Plugins=========================
@@ -111,11 +116,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "Bundle 'vim-scripts/taglist.vim'
-Bundle 'majutsushi/tagbar'
+"Bundle 'majutsushi/tagbar'
 
 Bundle 'scrooloose/nerdtree'
 
-Bundle 'vim-scripts/vimgdb'
+"Bundle 'vim-scripts/vimgdb'
 
 Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
@@ -128,15 +133,19 @@ Bundle "mattn/emmet-vim"
 Bundle 'bling/vim-airline'
 
 "dependency for vim-lua-ftplugin
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-lua-ftplugin'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-lua-ftplugin'
 
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 
 "Bundle 'ervandew/supertab'
 
-Bundle 'JuliaLang/julia-vim'
+"Bundle 'JuliaLang/julia-vim'
+
+Bundle 'derekwyatt/vim-scala'
+" :SortScalaImports
+
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
@@ -338,9 +347,15 @@ autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
 "Run bash Script
 autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
 
+"Run scala Script
+autocmd BufRead *.scala nmap <F5> :update <CR> :!scala %<CR>
+
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
 
 set rtp+=~/.fzf
+
+" pretty print json
+" :%!python -m json.tool

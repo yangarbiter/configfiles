@@ -33,6 +33,8 @@ if [ -e ~/gitconfig ] ; then mv ~/.gitconfig ~/.gitconfig_local; fi
 ln -sv ${BASEDIR}/gitconfig ~/.gitconfig
 ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
 
+ln -sv ${BASEDIR}/screenrc ~/.screenrc
+
 GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 wget $GIT_COMPLET_URL -O $BASEDIR
 
