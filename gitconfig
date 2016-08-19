@@ -14,7 +14,7 @@
 	contributors = shortlog --summary --numbered
 
 [diff]
-	external = ~/git_diff_wrapper
+	external = ~/.git_diff_wrapper
 
 [pager]
 	diff =
