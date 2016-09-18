@@ -9,6 +9,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 alias vi=vim
+alias -='cd -'
 alias telnet='telnet -8'
 
 os=${OSTYPE/[^a-z]*/}
