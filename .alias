@@ -9,7 +9,6 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 alias vi=vim
-alias -='cd -'
 alias telnet='telnet -8'
 
 os=${OSTYPE/[^a-z]*/}
@@ -20,6 +19,7 @@ case "$os" in
 "linux")
 	alias ls='ls --color --show-control-chars -F'
 	alias l='ls --color --show-control-chars -F'
+	alias la='ls --color --show-control-chars -A'
 	alias ll='ls --color --show-control-chars -F -al'
 	;;
 "solaris")
@@ -27,3 +27,7 @@ case "$os" in
 	alias ping="ping -s"
 	;;
 esac
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'

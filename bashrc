@@ -3,11 +3,30 @@
 . $HOME/.shrc
 
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
+[ -f ~/.alias ] && source ~/.alias
 
 GIT_PS1_SHOWDIRTYSTATE=1
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]\[\033[01;33m\]@\h\[\033[00m\]\[\033[01;34m\]<\A>\[\033[00m\] $(__git_ps1 "\[\e[1;35m\](%s) \[\e[m\]")[\w] '
 
 TERM=screen-256color
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # Usage: smartextract <file>
 # Description: extracts archived files / mounts disk images
