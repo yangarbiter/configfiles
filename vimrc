@@ -287,6 +287,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+imap jj <Esc>
+
 "====================vim-lua-ftplugin=====================
 let g:lua_check_globals = 1
 let g:lua_check_syntax = 1
