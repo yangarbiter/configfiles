@@ -146,6 +146,9 @@ Bundle 'bling/vim-airline'
 Bundle 'derekwyatt/vim-scala'
 " :SortScalaImports
 
+Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
+
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
 
