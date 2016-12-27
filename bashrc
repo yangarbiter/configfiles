@@ -25,7 +25,7 @@ shopt -s histappend
 
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=5000
 HISTFILESIZE=2000
 
 # Usage: smartextract <file>
@@ -56,11 +56,12 @@ alias e='smartextract'
 . $DOTFILE_BASEDIR/git-prompt.sh
 . $DOTFILE_BASEDIR/z/z.sh
 
+export FZF_DEFAULT_OPTS=--history-size=5000
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export GOPATH=~/gopkgs
 export PATH=$PATH:~/gopkgs/bin/
 
-export PATH="/home/arbiter/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+[ -f ~/.pyenv ] && export PATH="/home/arbiter/.pyenv/bin:$PATH"
+[ -f ~/.pyenv ] && eval "$(pyenv init -)"
+[ -f ~/.pyenv ] && eval "$(pyenv virtualenv-init -)"
