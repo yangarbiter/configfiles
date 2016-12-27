@@ -36,7 +36,7 @@ ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
 ln -sv ${BASEDIR}/screenrc ~/.screenrc
 
 GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-wget $GIT_COMPLET_URL -O $BASEDIR
+wget $GIT_COMPLET_URL -O $BASEDIR/git-completion.bash
 
 GIT_PROMPT_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 wget $GIT_PROMPT_URL -O $BASEDIR/git-prompt.sh
@@ -49,3 +49,6 @@ vim +BundleInstall +qall
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# install pyenv
+# curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash

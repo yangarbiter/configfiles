@@ -60,3 +60,7 @@ alias e='smartextract'
 
 export GOPATH=~/gopkgs
 export PATH=$PATH:~/gopkgs/bin/
+
+export PATH="/home/arbiter/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
