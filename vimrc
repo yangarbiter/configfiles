@@ -363,3 +363,6 @@ set rtp+=~/.fzf
 
 " pretty print json
 " :%!python -m json.tool
+
+" search selected text
+vnoremap // y/<C-R>"<CR>
