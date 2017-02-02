@@ -1,6 +1,5 @@
 syntax on
 colorscheme scheme
-filetype on
 
 "set 80 line
 set tw=80
@@ -53,24 +52,24 @@ match ExtraWhitespace /\s\+$/
 "au InsertLeave * match ExtraWhitespace /\s\+$/
 highlight Comment ctermfg=darkcyan
 
-let $CC = "gcc"
-let $CXX = "g++"
-let $CFLAGS = "-Wall"
-let $CXXFLAGS = "-Wall"
-let $ERRFILE="/a09e5c75-b7f9-415f-90b7-347fb46b173d.err"
-
-function! SingleCompile()
-	let file_suffix = expand("%:e")
-	if file_suffix == "c"
-		!${CC} ${CFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE}
-		cg ${HOME}${ERRFILE}
-	elseif file_suffix == "cpp"
-		!${CXX} ${CXXFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE}
-		cg ${HOME}${ERRFILE}
-	else
-		echo "This file has an UNKNOWN SUFFIX!"
-	endif
-endfunction
+"let $CC = "gcc"
+"let $CXX = "g++"
+"let $CFLAGS = "-Wall"
+"let $CXXFLAGS = "-Wall"
+"let $ERRFILE="/a09e5c75-b7f9-415f-90b7-347fb46b173d.err"
+"
+"function! SingleCompile()
+"	let file_suffix = expand("%:e")
+"	if file_suffix == "c"
+"		!${CC} ${CFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE}
+"		cg ${HOME}${ERRFILE}
+"	elseif file_suffix == "cpp"
+"		!${CXX} ${CXXFLAGS} %:p:. -o %:r ${LDFLAGS} 2>&1 | tee ${HOME}${ERRFILE}
+"		cg ${HOME}${ERRFILE}
+"	else
+"		echo "This file has an UNKNOWN SUFFIX!"
+"	endif
+"endfunction
 
 function! ToggleQuickFixWindow()
 	if g:quick_fix_window_on
@@ -110,55 +109,58 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-"Bundle 'vim-scripts/taglist.vim'
-"Bundle 'majutsushi/tagbar'
+"Plugin 'vim-scripts/taglist.vim'
+"Plugin 'majutsushi/tagbar'
 
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
-"Bundle 'vim-scripts/vimgdb'
+"Plugin 'vim-scripts/vimgdb'
 
-"Bundle 'klen/python-mode'
-Bundle 'davidhalter/jedi-vim'
+"Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
 
-"Bundle 'LargeFile'
+Plugin 'LargeFile'
 
-"Bundle 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 "https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 "dependency for vim-lua-ftplugin
-"Bundle 'xolox/vim-misc'
-"Bundle 'xolox/vim-lua-ftplugin'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-lua-ftplugin'
 
-"Bundle 'godlygeek/tabular'
-"Bundle 'plasticboy/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
 
-"Bundle 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 
-"Bundle 'JuliaLang/julia-vim'
+"Plugin 'JuliaLang/julia-vim'
 
-Bundle 'derekwyatt/vim-scala'
+"Plugin 'derekwyatt/vim-scala'
 " :SortScalaImports
 
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+Plugin 'skywind3000/asyncrun.vim'
+
+" Asynchronous Lint Engine
+Plugin 'w0rp/ale'
+
+call vundle#end()
+filetype plugin indent on
 
 "=============vim-airline=======================
 let g:airline#extensions#tabline#enabled = 1
 
 "=============LargeFile=====================
 let g:LargeFile = 1000
-
-" The bundles you install will be listed here
-filetype plugin indent on
-
-" The rest of your config follows here
 
 "jedi-vim
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -168,6 +170,14 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
+
+"=============ale====================
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 "==============vim-gdb===============
 "List of default key mappings:
@@ -202,18 +212,18 @@ let g:jedi#show_call_signatures = "1"
 
 
 "==============pymode===============
-autocmd FileType python let g:pymode_lint = 0
-autocmd FileType python let g:pymode_lint_on_write = 1
-autocmd FileType python let g:pymode_lint_cwindow = 1
-autocmd FileType python let g:pymode_lint_checkers = ['pylint', 'pep8']
-autocmd FileType python nmap <F3> :PymodeLintToggle<CR>
-
-autocmd FileType python let g:pymode_breakpoint = 1
-autocmd FileType python let g:pymode_breakpoint_bind = '<leader>b'
-
-autocmd FileType python let g:pymode_virtualenv = 1
-
-let g:pymode_rope = 0
+"autocmd FileType python let g:pymode_lint = 0
+"autocmd FileType python let g:pymode_lint_on_write = 1
+"autocmd FileType python let g:pymode_lint_cwindow = 1
+"autocmd FileType python let g:pymode_lint_checkers = ['pylint', 'pep8']
+"autocmd FileType python nmap <F3> :PymodeLintToggle<CR>
+"
+"autocmd FileType python let g:pymode_breakpoint = 1
+"autocmd FileType python let g:pymode_breakpoint_bind = '<leader>b'
+"
+"autocmd FileType python let g:pymode_virtualenv = 1
+"
+"let g:pymode_rope = 0
 
 
 "==============taglist======================
@@ -292,6 +302,9 @@ map <C-l> <C-w>l
 
 imap jj <Esc>
 
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 "====================vim-lua-ftplugin=====================
 let g:lua_check_globals = 1
 let g:lua_check_syntax = 1
@@ -325,34 +338,51 @@ inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 "	endif
 "endfunction
 
-"Run Python Script
+" Quick run via <F5>
+nnoremap <F5> :call <SID>compile_and_run()<CR>
+
+augroup SPACEVIM_ASYNCRUN
+    autocmd!
+    " Automatically open the quickfix window
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
+augroup END
+
+function! s:compile_and_run()
+    exec 'w'
+    if &filetype == 'c'
+        exec "AsyncRun! gcc % -o %<; time ./%<"
+    elseif &filetype == 'cpp'
+       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
+    elseif &filetype == 'java'
+       exec "AsyncRun! javac %; time java %<"
+    elseif &filetype == 'sh'
+       exec "AsyncRun! time bash %"
+    elseif &filetype == 'python'
+       exec "AsyncRun! time python %"
+    endif
+endfunction
+
+""Run Python Script
 autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead *.py nmap <F5> :!python2 %<CR>
+"autocmd BufRead *.py nmap <F5> :!python2 %<CR>
 autocmd BufRead *.py nmap <F6> :!python3 %<CR>
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py set go+=b
-
-"Run lua script
-autocmd BufRead *.lua nmap <F5> :!lua %<CR>
-
-"Run php Script
-autocmd BufRead *.php nmap <F5> :!php %<CR>
-
-"Run bash Script
-autocmd BufRead *.sh nmap <F5> :!bash %<CR>
-
-"Run haskell Script
-autocmd BufRead *.hs nmap <F5> :!runghc %<CR>
-
-"Turn markdown to html
-autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
-
-"Run bash Script
-autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
-
-"Run scala Script
-autocmd BufRead *.scala nmap <F5> :update <CR> :!scala %<CR>
+""Run lua script
+"autocmd BufRead *.lua nmap <F5> :!lua %<CR>
+""Run php Script
+"autocmd BufRead *.php nmap <F5> :!php %<CR>
+""Run bash Script
+"autocmd BufRead *.sh nmap <F5> :!bash %<CR>
+""Run haskell Script
+"autocmd BufRead *.hs nmap <F5> :!runghc %<CR>
+""Turn markdown to html
+"autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
+""Run bash Script
+"autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
+""Run scala Script
+"autocmd BufRead *.scala nmap <F5> :update <CR> :!scala %<CR>
 
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
