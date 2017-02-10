@@ -178,6 +178,8 @@ let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "==============vim-gdb===============
 "List of default key mappings:
@@ -302,8 +304,7 @@ map <C-l> <C-w>l
 
 imap jj <Esc>
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+autocmd FileType python nnoremap <Leader>f :0,$!yapf<CR>
 
 "====================vim-lua-ftplugin=====================
 let g:lua_check_globals = 1
@@ -338,8 +339,8 @@ inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 "	endif
 "endfunction
 
-" Quick run via <F5>
-nnoremap <F5> :call <SID>compile_and_run()<CR>
+" Quick run
+nnoremap <leader>r :call <SID>compile_and_run()<CR>
 
 augroup SPACEVIM_ASYNCRUN
     autocmd!
@@ -362,27 +363,42 @@ function! s:compile_and_run()
     endif
 endfunction
 
-""Run Python Script
+"Run Python Script
 autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-"autocmd BufRead *.py nmap <F5> :!python2 %<CR>
+autocmd BufRead *.py nmap <F5> :!python2 %<CR>
 autocmd BufRead *.py nmap <F6> :!python3 %<CR>
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py set go+=b
-""Run lua script
-"autocmd BufRead *.lua nmap <F5> :!lua %<CR>
-""Run php Script
-"autocmd BufRead *.php nmap <F5> :!php %<CR>
-""Run bash Script
-"autocmd BufRead *.sh nmap <F5> :!bash %<CR>
-""Run haskell Script
-"autocmd BufRead *.hs nmap <F5> :!runghc %<CR>
-""Turn markdown to html
-"autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
-""Run bash Script
-"autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
-""Run scala Script
-"autocmd BufRead *.scala nmap <F5> :update <CR> :!scala %<CR>
+"Run lua script
+autocmd BufRead *.lua nmap <F5> :!lua %<CR>
+"Run php Script
+autocmd BufRead *.php nmap <F5> :!php %<CR>
+"Run bash Script
+autocmd BufRead *.sh nmap <F5> :!bash %<CR>
+"Run haskell Script
+autocmd BufRead *.hs nmap <F5> :!runghc %<CR>
+"Turn markdown to html
+autocmd BufRead *.md nmap <F5> :!pandoc -f markdown -t html %<CR>
+"Run bash Script
+autocmd BufRead *.jl nmap <F5> :update <CR> :!julia %<CR>
+"Run scala Script
+autocmd BufRead *.scala nmap <F5> :update <CR> :!scala %<CR>
+
+let mapleader = " " " Leader is the space key
+let g:mapleader = " "
+" easier write
+nmap <leader>w :w!<cr>
+" easier quit
+nmap <leader>q :q<cr>
+" fzf command
+set rtp+=~/.fzf
+nnoremap <leader>t :call fzf#run({ 'sink': 'tabe', 'options': '-m +c', 'dir': '.', 'source': 'find .' })<CR>
+"paste from outside buffer
+nnoremap <leader>p :set paste<CR>"+p:set nopaste<CR>
+vnoremap <leader>p <Esc>:set paste<CR>gv"+p:set nopaste<CR>
+"copy to outside buffer
+vnoremap <leader>y "+y
 
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
