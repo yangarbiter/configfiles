@@ -22,6 +22,12 @@ case "$os" in
 	alias la='ls --color --show-control-chars -A'
 	alias ll='ls --color --show-control-chars -F -al'
 	;;
+"darwin")
+	alias ls='ls -G'
+	alias l='ls -eG'
+	alias la='ls -AG'
+	alias ll='ls -elG'
+	;;
 "solaris")
 	alias ls='ls --color --show-control-chars -F'
 	alias ping="ping -s"

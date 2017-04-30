@@ -4,6 +4,7 @@ git submodule init
 git submodule update
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ln -sv ${BASEDIR}/env_vars.sh ~/.env_vars.sh
 echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
 
 # terminal
