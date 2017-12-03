@@ -44,6 +44,8 @@ smartextract () {
             *.tgz)      tar -zxvf $1        ;;
             *.zip)      unzip $1            ;;
             *.Z)        uncompress $1       ;;
+            *.7z)       7z e $1       ;;
+            *.rar)      unrar e $1       ;;
             *)          echo "'$1' cannot be extracted/mounted via smartextract()" ;;
         esac
     else
@@ -61,7 +63,3 @@ export FZF_DEFAULT_OPTS=--history-size=5000
 
 export GOPATH=~/gopkgs
 export PATH=$PATH:~/gopkgs/bin/
-
-[ -e ~/.pyenv ] && export PATH="/home/arbiter/.pyenv/bin:$PATH"
-[ -e ~/.pyenv ] && eval "$(pyenv init -)"
-[ -e ~/.pyenv ] && eval "$(pyenv virtualenv-init -)"
