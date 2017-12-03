@@ -124,7 +124,7 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 
-Plugin 'LargeFile'
+"Plugin 'LargeFile'
 
 "Plugin 'mattn/emmet-vim'
 "https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
@@ -145,13 +145,16 @@ Plugin 'bling/vim-airline'
 "Plugin 'derekwyatt/vim-scala'
 " :SortScalaImports
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+" Javascript
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx'
 
-Plugin 'skywind3000/asyncrun.vim'
+"Plugin 'skywind3000/asyncrun.vim'
 
 " Asynchronous Lint Engine
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
+
+Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on

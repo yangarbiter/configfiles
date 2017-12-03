@@ -36,15 +36,17 @@ alias screen='screen -D -R'
 alias grep='egrep --color=auto'
 alias talk=ytalk
 
+export PATH='/usr/local/bin:/bin:/sbin:/usr/bin:/opt/local/bin:$PATH'
+
 ## Shell style
 #
 if [ $SHELL = "/bin/sh" ]; then
   if [ "$WINDOW" != "" ]; then
     export PS1="$LOGNAME@`hostname` [W$WINDOW] "
-  else 
+  else
     export PS1="$LOGNAME@`hostname`$ "
   fi
-else 
+else
   if [ "$WINDOW" != "" ]; then
     export PS1="$LOGNAME@\h {\w} [W$WINDOW] "
   else

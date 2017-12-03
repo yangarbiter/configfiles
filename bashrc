@@ -1,7 +1,6 @@
-
 ## BASH: this will run on each non-login and interactive shell.
-. $HOME/.shrc
 
+. $HOME/.shrc 
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
 [ -f ~/.alias ] && source ~/.alias
 
@@ -19,7 +18,6 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -62,4 +60,8 @@ export FZF_DEFAULT_OPTS=--history-size=5000
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export GOPATH=~/gopkgs
-export PATH=$PATH:~/gopkgs/bin/
+#export PATH=$PATH:~/gopkgs/bin/:/sbin/:/usr/sbin
+
+#[ -e ~/.pyenv ] && export PATH="/Users/arbiter/.pyenv/bin:$PATH"
+#[ -e ~/.pyenv ] && eval "$(pyenv init -)"
+#[ -e ~/.pyenv ] && eval "$(pyenv virtualenv-init -)"

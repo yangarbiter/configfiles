@@ -1,7 +1,5 @@
-
-
 [ -f ~/.profile_local ] && source ~/.profile_local
-[ -f ~/.bash_profile_local ] && source ~/.bash_profile_local
+#[ -f ~/.bash_profile_local ] && source ~/.bash_profile_local
 
 ulimit -S -c 0	# core dumpsize
 umask 027
