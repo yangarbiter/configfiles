@@ -16,6 +16,7 @@ ln -sv ${BASEDIR}/shrc ~/.shrc
 
 if [ -e ~/.profile ] ; then mv ~/.profile ~/.profile_local; fi
 if [ -e ~/.bash_profile ] ; then mv ~/.bash_profile ~/.bash_profile_local; fi
+ln -sv ${BASEDIR}/bash_profile ~/.bash_profile
 ln -sv ${BASEDIR}/.profile ~/.profile
 
 if [ -e ~/.alias ] ; then rm ~/.alias; fi
