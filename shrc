@@ -36,7 +36,7 @@ alias screen='screen -D -R'
 alias grep='egrep --color=auto'
 alias talk=ytalk
 
-export PATH='/usr/local/bin:/bin:/sbin:/usr/bin:/opt/local/bin:$PATH'
+export PATH="/usr/local/bin:/bin:/sbin:/usr/bin:/opt/local/bin:$PATH"
 
 ## Shell style
 #
