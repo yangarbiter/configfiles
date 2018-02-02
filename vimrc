@@ -109,11 +109,11 @@ autocmd Filetype scala setlocal shiftwidth=2 tabstop=2
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle required!
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " C/Cpp
 "Plugin 'rip-rip/clang_complete'
