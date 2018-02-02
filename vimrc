@@ -99,6 +99,7 @@ autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
 autocmd Filetype html setlocal shiftwidth=2 tabstop=2
 autocmd Filetype css setlocal shiftwidth=2 tabstop=2
 autocmd Filetype c setlocal shiftwidth=2 tabstop=2
+autocmd Filetype cpp setlocal shiftwidth=2 tabstop=2
 autocmd Filetype lua setlocal shiftwidth=3 softtabstop=3
 autocmd Filetype sh setlocal shiftwidth=2 tabstop=2
 autocmd Filetype scala setlocal shiftwidth=2 tabstop=2
@@ -114,8 +115,11 @@ call vundle#begin()
 " let Vundle manage Vundle required!
 Plugin 'gmarik/vundle'
 
+" C/Cpp
+"Plugin 'rip-rip/clang_complete'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'vim-scripts/taglist.vim'
-"Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 Plugin 'scrooloose/nerdtree'
 
@@ -235,6 +239,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "nnoremap <F3> :TlistToggle<CR>
 
 "==============tagbar======================
+autocmd BufNewFile,BufRead *.h,*.c setfiletype cpp
 autocmd FileType c nmap <F3> :TagbarToggle<CR>
 autocmd FileType c++ nmap <F3> :TagbarToggle<CR>
 
