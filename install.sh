@@ -54,3 +54,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # install pyenv
 # curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+# pyenv update
+# env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
+# env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.14
