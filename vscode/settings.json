@@ -5,8 +5,7 @@
   "telemetry.enableCrashReporter": false,
   "vim.leader": "<space>",
   "vim.easymotion": true,
-  "vim.disableAnnoyingNeovimMessage": true,
-  "vim.otherModesKeyBindingsNonRecursive": [
+  "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before":["<leader>", "w"],
       "after":[],
@@ -90,5 +89,6 @@
     ]
   }
   ],
-  "latex-workshop.message.update.show": false
+  "latex-workshop.message.update.show": false,
+  "python.jediEnabled": false
 }

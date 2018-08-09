@@ -4,56 +4,98 @@ git submodule init
 git submodule update
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ln -sv ${BASEDIR}/env_vars.sh ~/.env_vars.sh
-echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
 
-# terminal
-if [ -e ~/.bashrc ] ; then mv ~/.bashrc ~/.bashrc_local; fi
-ln -sv ${BASEDIR}/bashrc ~/.bashrc
+OS=${OSTYPE/[^a-z]*/}
+case $OS in
+  'linux')
+    OS='linux'
+    ;;
+  'freebsd')
+    OS='freebsd'
+    ;;
+  'windowsnt')
+    OS='windows'
+    ;;
+  'darwin')
+    OS='mac'
+    ;;
+  'sunos')
+    OS='solaris'
+    ;;
+  'aix') ;;
+  *) ;;
+esac
 
-if [ -e ~/.shrc ] ; then mv ~/.shrc ~/.shrc_local; fi
-ln -sv ${BASEDIR}/shrc ~/.shrc
+link_and_bak () {
+  if [[ ! "$1" -ef "$2" ]]; then
+    if [ -e "$2" ] ; then mv "$2" "$2".bak; fi
+    ln -sv "$1" "$2";
+  fi
+}
 
-if [ -e ~/.profile ] ; then mv ~/.profile ~/.profile_local; fi
-if [ -e ~/.bash_profile ] ; then mv ~/.bash_profile ~/.bash_profile_local; fi
-ln -sv ${BASEDIR}/bash_profile ~/.bash_profile
-ln -sv ${BASEDIR}/.profile ~/.profile
+if [ "$1" == vscode ]; then
+  if [ "$OS" == mac ]; then
+    vssettings=$HOME/Library/Application\ Support/Code/User/settings.json
+    link_and_bak ${BASEDIR}/vscode/settings.json "${vssettings}"
 
-if [ -e ~/.alias ] ; then rm ~/.alias; fi
-ln -sv ${BASEDIR}/.alias ~/.alias
+    vssnippet=$HOME/Library/Application\ Support/Code/User/snippets
+    link_and_bak ${BASEDIR}/vscode/snippets "${vssnippet}"
 
-# vim
-if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
-ln -sv ${BASEDIR}/vimrc ~/.vimrc
-ln -sv ${BASEDIR}/vim ~/.vim
+    vskey=$HOME/Library/Application\ Support/Code/User/keybindings.json
+    link_and_bak ${BASEDIR}/vscode/keybindings.json "${vskey}"
+  fi
+elif [ "$1" == pyenv ]; then
+  # install pyenv
+  curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+  pyenv update
+  # env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
+  # env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.14
+else
+  ln -sv ${BASEDIR}/env_vars.sh ~/.env_vars.sh
+  echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
 
-# zsh
-# ln -sv ${BASEDIR}/zshrc ~/.zshrc
+  # terminal
+  if [ -e ~/.bashrc ] ; then mv ~/.bashrc ~/.bashrc_local; fi
+  ln -sv ${BASEDIR}/bashrc ~/.bashrc
 
-# git
-if [ -e ~/gitconfig ] ; then mv ~/.gitconfig ~/.gitconfig_local; fi
-ln -sv ${BASEDIR}/gitconfig ~/.gitconfig
-ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
+  if [ -e ~/.shrc ] ; then mv ~/.shrc ~/.shrc_local; fi
+  ln -sv ${BASEDIR}/shrc ~/.shrc
 
-ln -sv ${BASEDIR}/screenrc ~/.screenrc
+  if [ -e ~/.profile ] ; then mv ~/.profile ~/.profile_local; fi
+  if [ -e ~/.bash_profile ] ; then mv ~/.bash_profile ~/.bash_profile_local; fi
+  ln -sv ${BASEDIR}/bash_profile ~/.bash_profile
+  ln -sv ${BASEDIR}/.profile ~/.profile
 
-GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-wget $GIT_COMPLET_URL -O $BASEDIR/git-completion.bash
+  if [ -e ~/.alias ] ; then rm ~/.alias; fi
+  ln -sv ${BASEDIR}/.alias ~/.alias
 
-GIT_PROMPT_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-wget $GIT_PROMPT_URL -O $BASEDIR/git-prompt.sh
+  # vim
+  if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
+  ln -sv ${BASEDIR}/vimrc ~/.vimrc
+  ln -sv ${BASEDIR}/vim ~/.vim
 
-# install vim extensions
-# wget http://vimcolorschemetest.googlecode.com/svn/colors/256-jungle.vim
+  # zsh
+  # ln -sv ${BASEDIR}/zshrc ~/.zshrc
 
-vim +BundleInstall +qall
+  # git
+  if [ -e ~/gitconfig ] ; then mv ~/.gitconfig ~/.gitconfig_local; fi
+  ln -sv ${BASEDIR}/gitconfig ~/.gitconfig
+  ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
 
-# install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+  ln -sv ${BASEDIR}/screenrc ~/.screenrc
 
-# install pyenv
-# curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-# pyenv update
-# env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
-# env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.14
+  GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+  wget $GIT_COMPLET_URL -O $BASEDIR/git-completion.bash
+
+  GIT_PROMPT_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+  wget $GIT_PROMPT_URL -O $BASEDIR/git-prompt.sh
+
+  # install vim extensions
+  # wget http://vimcolorschemetest.googlecode.com/svn/colors/256-jungle.vim
+
+  vim +BundleInstall +qall
+
+  # install fzf
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
