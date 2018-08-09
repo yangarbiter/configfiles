@@ -3,6 +3,8 @@
   "terminal.integrated.shellArgs.linux": ["--login"],
   "terminal.integrated.shellArgs.osx": ["--login"],
   "telemetry.enableCrashReporter": false,
+  "terminal.integrated.scrollback": 3000,
+
   "vim.leader": "<space>",
   "vim.easymotion": true,
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -19,43 +21,49 @@
       "commands": [
         {"command": ":q"}
       ]
-    }
+    },
+    {
+      "before":["<leader>", "g"],
+      "after":[],
+      "commands": [
+        "editor.action.goToDeclaration"
+      ]
+    },
+    {
+      "before":["<leader>", "d"],
+      "after":[],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before":["<leader>", "r", "f"],
+      "after":[],
+      "commands": [
+        "editor.action.referenceSearch.trigger"
+      ]
+    },
   ],
   "vim.history": 300,
   "vim.hlsearch": true,
+
   "[tex]": {
     "cSpell.ignoreRegExpList": [
       "\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?",
       "\\$.+?\\$"
     ] 
   },
-  "cSpell.enabledLanguageIds": [
-    "c",
-    "cpp",
-    "csharp",
-    "go",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "latex",
-    "markdown",
-    "php",
-    "plaintext",
-    "python",
-    "tex",
-    "text",
-    "typescript",
-    "typescriptreact",
-    "yml"
-  ],
-  "typescript.check.npmIsInstalled": false,
-  "cSpell.maxNumberOfProblems": 1000,
   "python.venvPath": "~/.pyenv",
   "python.pythonPath": "$HOME/.pyenv/versions/3.6.5/bin/python",
+  "python.jediEnabled": true,
   "[python]": {},
-  "terminal.integrated.scrollback": 3000,
+
+  "typescript.check.npmIsInstalled": false,
+
   "explorer.confirmDelete": false,
+
   "git.autofetch": true,
+
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.toolchain": [
   {
@@ -90,5 +98,28 @@
   }
   ],
   "latex-workshop.message.update.show": false,
-  "python.jediEnabled": false
+
+  "cSpell.maxNumberOfProblems": 1000,
+  "cSpell.userWords": [
+    "proba"
+  ],
+  "cSpell.enabledLanguageIds": [
+    "c",
+    "cpp",
+    "csharp",
+    "go",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "latex",
+    "markdown",
+    "php",
+    "plaintext",
+    "python",
+    "tex",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yml"
+  ],
 }

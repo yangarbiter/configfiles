@@ -9,4 +9,5 @@
     { "key": "cmd+7",                "command": "workbench.action.openEditorAtIndex7" },
     { "key": "cmd+8",                "command": "workbench.action.openEditorAtIndex8" },
     { "key": "cmd+9",                "command": "workbench.action.openEditorAtIndex9" },
+    { "key": "cmd+9",                "command": "workbench.action.openEditorAtIndex9" },
 ]
