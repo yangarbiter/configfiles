@@ -62,6 +62,6 @@ export FZF_DEFAULT_OPTS=--history-size=5000
 export GOPATH=~/gopkgs
 #export PATH=$PATH:~/gopkgs/bin/:/sbin/:/usr/sbin
 
-#[ -e ~/.pyenv ] && export PATH="/Users/arbiter/.pyenv/bin:$PATH"
-#[ -e ~/.pyenv ] && eval "$(pyenv init -)"
-#[ -e ~/.pyenv ] && eval "$(pyenv virtualenv-init -)"
+[ -e ~/.pyenv ] && export PATH="$HOME/.pyenv/bin:$PATH"
+[ -e ~/.pyenv ] && eval "$(pyenv init -)"
+[ -e ~/.pyenv ] && eval "$(pyenv virtualenv-init -)"

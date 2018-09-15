@@ -49,7 +49,7 @@ elif [ "$1" == pyenv ]; then
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   pyenv update
   # env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
-  # env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.14
+  env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
 else
   ln -sv ${BASEDIR}/env_vars.sh ~/.env_vars.sh
   echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
