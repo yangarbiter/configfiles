@@ -1,7 +1,6 @@
 ## BASH: this will run on each non-login and interactive shell.
 
-. $HOME/.shrc
-source $HOME/.env_var.sh
+source $HOME/.shrc
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
 [ -f ~/.alias ] && source ~/.alias
 

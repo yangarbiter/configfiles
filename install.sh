@@ -46,7 +46,7 @@ if [ "$1" == vscode ]; then
   fi
 elif [ "$1" == pyenv ]; then
   # install pyenv
-  export PYENV_ROOT=$HOME
+  export PYENV_ROOT=$HOME/.pyenv
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   pyenv update
   # env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
