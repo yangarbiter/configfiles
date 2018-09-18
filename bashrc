@@ -1,6 +1,6 @@
 ## BASH: this will run on each non-login and interactive shell.
 
-. $HOME/.shrc 
+. $HOME/.shrc
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
 [ -f ~/.alias ] && source ~/.alias
 
@@ -61,6 +61,9 @@ export FZF_DEFAULT_OPTS=--history-size=5000
 
 export GOPATH=~/gopkgs
 #export PATH=$PATH:~/gopkgs/bin/:/sbin/:/usr/sbin
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 [ -e ~/.pyenv ] && export PATH="$HOME/.pyenv/bin:$PATH"
 [ -e ~/.pyenv ] && eval "$(pyenv init -)"
