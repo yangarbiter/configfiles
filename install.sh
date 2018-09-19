@@ -46,10 +46,12 @@ if [ "$1" == vscode ]; then
   fi
 elif [ "$1" == pyenv ]; then
   # install pyenv
+  export PYENV_ROOT=$HOME/.pyenv
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   pyenv update
   # env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
-  # env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.14
+  env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
+  echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
 else
   ln -sv ${BASEDIR}/env_vars.sh ~/.env_vars.sh
   echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
