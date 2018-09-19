@@ -1,8 +1,14 @@
 ## BASH: this will run on each non-login and interactive shell.
 
-. $HOME/.shrc 
+. $HOME/.shrc
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
 [ -f ~/.alias ] && source ~/.alias
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
 
 GIT_PS1_SHOWDIRTYSTATE=1
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]\[\033[01;33m\]@\h\[\033[00m\]\[\033[01;34m\]<\A>\[\033[00m\] $(__git_ps1 "\[\e[1;35m\](%s) \[\e[m\]")[\w] '
