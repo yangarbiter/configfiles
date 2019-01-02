@@ -32,6 +32,12 @@ link_and_bak () {
     ln -sv "$1" "$2";
   fi
 }
+link_and_rm () {
+  if [[ ! "$1" -ef "$2" ]]; then
+    if [ -e "$2" ] ; then rm "$2"; fi
+    ln -sv "$1" "$2";
+  fi
+}
 
 if [ "$1" == vscode ]; then
   if [ "$OS" == mac ]; then
@@ -44,12 +50,26 @@ if [ "$1" == vscode ]; then
     vskey=$HOME/Library/Application\ Support/Code/User/keybindings.json
     link_and_bak ${BASEDIR}/vscode/keybindings.json "${vskey}"
   fi
+
 elif [ "$1" == pyenv ]; then
   # install pyenv
+  export PYENV_ROOT=$HOME/.pyenv
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   pyenv update
   # env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
-  # env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.14
+  env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
+  echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
+
+elif [ "$1" == remove_all ]; then
+  rm -rf ~/.bashrc
+  rm -rf ~/.shrc
+  rm -rf ~/.bash_profile ~/.profile
+  rm -rf ~/.alias
+  rm -rf ~/.vim ~/.vimrc
+  rm -rf ~/.gitconfig ~/.git_diff_wrapper
+  rm -rf ~/.screenrc
+  rm -rf ~/.fzf
+
 else
   ln -sv ${BASEDIR}/env_vars.sh ~/.env_vars.sh
   echo "export DOTFILE_BASEDIR=$BASEDIR" >> ~/.env_vars.sh
@@ -82,7 +102,8 @@ else
   ln -sv ${BASEDIR}/gitconfig ~/.gitconfig
   ln -sv ${BASEDIR}/git_diff_wrapper ~/.git_diff_wrapper
 
-  ln -sv ${BASEDIR}/screenrc ~/.screenrc
+  link_and_rm ${BASEDIR}/screenrc ~/.screenrc
+  link_and_rm ${BASEDIR}/tmux.conf ~/.tmux.conf
 
   GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
   wget $GIT_COMPLET_URL -O $BASEDIR/git-completion.bash
