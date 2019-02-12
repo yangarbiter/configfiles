@@ -43,22 +43,32 @@ if [ "$1" == vscode ]; then
   if [ "$OS" == mac ]; then
     vssettings=$HOME/Library/Application\ Support/Code/User/settings.json
     link_and_bak ${BASEDIR}/vscode/settings.json "${vssettings}"
-
     vssnippet=$HOME/Library/Application\ Support/Code/User/snippets
     link_and_bak ${BASEDIR}/vscode/snippets "${vssnippet}"
-
     vskey=$HOME/Library/Application\ Support/Code/User/keybindings.json
     link_and_bak ${BASEDIR}/vscode/keybindings.json "${vskey}"
+  elif [ "$OS" == mac ]; then
+    vssettings=$HOME/.config/Code/User/settings.json
+    link_and_bak ${BASEDIR}/vscode/settings.json "${vssettings}"
+    vssnippet=$HOME/.config/Code/User/snippets
+    link_and_bak ${BASEDIR}/vscode/snippets "${vssnippet}"
+    vskey=$HOME/.config/Code/User/keybindings.json
+    link_and_bak ${BASEDIR}/vscode/keybindings.json "${vskey}"
   fi
+  echo "installed vscode preferences."
 
 elif [ "$1" == pyenv ]; then
   # install pyenv
   export PYENV_ROOT=$HOME/.pyenv
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   pyenv update
-  # env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
-  env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.0
+  if [ "$OS" == 'linux' ]; then
+    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.6.8
+  else
+    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
+  fi
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
+  echo "installed pyenv."
 
 elif [ "$1" == remove_all ]; then
   rm -rf ~/.bashrc
@@ -90,8 +100,9 @@ else
   ln -sv ${BASEDIR}/.alias ~/.alias
 
   # vim
-  if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
-  ln -sv ${BASEDIR}/vimrc ~/.vimrc
+  #if [ -e ~/.vimrc ] ; then mv ~/.vimrc ~/.vimrc_local; fi
+  link_and_rm ${BASEDIR}/vimrc ~/.vimrc
+  if [ -e ~/.vim ] ; then mv ~/.vim; fi
   ln -sv ${BASEDIR}/vim ~/.vim
 
   # zsh
