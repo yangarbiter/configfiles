@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
+  "keyboard.dispatch": "keyCode",
   "terminal.integrated.shellArgs.linux": ["--login"],
   "terminal.integrated.shellArgs.osx": ["--login"],
   "telemetry.enableCrashReporter": false,
@@ -27,6 +28,13 @@
       "after":[],
       "commands": [
         "editor.action.goToDeclaration"
+      ]
+    },
+    {
+      "before":["<leader>", "t"],
+      "after":[],
+      "commands": [
+        "workbench.action.quickOpen"
       ]
     },
     {
