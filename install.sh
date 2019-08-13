@@ -70,6 +70,15 @@ elif [ "$1" == pyenv ]; then
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
   echo "installed pyenv."
 
+elif [ "$1" == zsh ]; then
+  # install oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  # uninstall_oh_my_zsh
+  # upgrade_oh_my_zsh
+  cp ${BASEDIR}/yyy.zsh-theme ~/.oh-my-zsh/custom/themes/
+  cp ${BASEDIR}/oh-my-zshrc ~/.zshrc
+  echo "installed pyenv."
+
 elif [ "$1" == remove_all ]; then
   rm -rf ~/.bashrc
   rm -rf ~/.shrc
