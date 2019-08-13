@@ -63,9 +63,9 @@ elif [ "$1" == pyenv ]; then
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   pyenv update
   if [ "$OS" == 'linux' ]; then
-    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.6.8
+    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.4
   else
-    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0 # OSX
+    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.7.4 # OSX
   fi
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
   echo "installed pyenv."
