@@ -106,6 +106,9 @@
   }
   ],
   "latex-workshop.message.update.show": false,
+  "[latex]": {
+    "editor.tabSize": 2
+  }
 
   "cSpell.maxNumberOfProblems": 1000,
   "cSpell.userWords": [
