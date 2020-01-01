@@ -60,6 +60,11 @@ smartextract () {
 }
 alias e='smartextract'
 
+backup () {
+    tar -zcvf "$1.$(date '+%Y-%m-%d').tar.gz" $1
+}
+alias bak='backup'
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
