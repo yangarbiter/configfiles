@@ -76,6 +76,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source $HOME/.alias
 [ -f ~/.fzf.bash ] && source ~/.fzf.zsh
+[ -x fd ] && export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" && export FZF_DEFAULT_COMMAND='fd --type f'
 
 eval "$(fasd --init auto)"
 
@@ -109,3 +110,4 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.env_vars.sh
+. $DOTFILE_BASEDIR/z/z.sh

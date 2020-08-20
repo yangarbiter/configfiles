@@ -6,3 +6,4 @@ h5py
 joblib
 ipython
 pipenv
+ipdb
