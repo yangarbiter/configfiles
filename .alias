@@ -5,6 +5,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+alias gqcp='git add -u; git commit -m "quick commit"; git push'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
