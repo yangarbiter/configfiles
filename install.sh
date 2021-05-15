@@ -70,6 +70,9 @@ elif [ "$1" == pyenv ]; then
     env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.8.8 # OSX
   fi
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
+  echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.env_vars.sh
+  echo 'eval "$(pyenv init --path)"' >> ~/.env_vars.sh
+  echo 'eval "$(pyenv init -)"' >> ~/.zshrc
   echo "installed pyenv."
 
 elif [ "$1" == zsh ]; then
