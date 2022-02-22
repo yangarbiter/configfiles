@@ -61,13 +61,18 @@ elif [ "$1" == pyenv ]; then
   # install pyenv
   export PYENV_ROOT=$HOME/.pyenv
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+  $PYENV_ROOT/bin/pyenv init -
+  $PYENV_ROOT/bin/pyenv virtualenv-init -
   pyenv update
   if [ "$OS" == 'linux' ]; then
-    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.7.4
+    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.8.8
   else
-    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.7.4 # OSX
+    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.8.8 # OSX
   fi
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
+  echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.env_vars.sh
+  echo 'eval "$(pyenv init --path)"' >> ~/.env_vars.sh
+  echo 'eval "$(pyenv init -)"' >> ~/.zshrc
   echo "installed pyenv."
 
 elif [ "$1" == zsh ]; then
@@ -77,7 +82,8 @@ elif [ "$1" == zsh ]; then
   # upgrade_oh_my_zsh
   cp ${BASEDIR}/yyy.zsh-theme ~/.oh-my-zsh/custom/themes/
   cp ${BASEDIR}/oh-my-zshrc ~/.zshrc
-  echo "installed pyenv."
+  ~/.fzf/install
+  echo "installed zsh."
 
 elif [ "$1" == remove_all ]; then
   rm -rf ~/.bashrc

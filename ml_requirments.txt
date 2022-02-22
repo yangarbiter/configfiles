@@ -8,3 +8,4 @@ ipython
 jupyterlab
 matplotlib
 pipenv
+ipdb
