@@ -13,6 +13,5 @@ export EDITOR=vim
 export SHELL=/bin/zsh
 export PYENV_SHELL=/bin/zsh
 
-
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/cuda-10.0/lib64
 export PATH=${PATH}:/opt/cuda-10.0/bin
