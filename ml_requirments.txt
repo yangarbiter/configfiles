@@ -5,6 +5,8 @@ scikit-learn
 h5py
 joblib
 ipython
+jupyterlab
+matplotlib
 pipenv
 ipdb
 jupyterlab

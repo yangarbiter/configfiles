@@ -1,8 +1,5 @@
-syntax on
-colorscheme scheme
-
 "set 80 line
-set tw=80
+set tw=120
 set cc=+1
 
 set encoding=utf-8
@@ -420,3 +417,6 @@ set rtp+=~/.fzf
 
 " search selected text
 vnoremap // y/<C-R>"<CR>
+
+syntax on
+colorscheme scheme

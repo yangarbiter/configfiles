@@ -12,7 +12,8 @@ export PYENV_ROOT=/home/arbiter/.pyenv
 export EDITOR=vim
 export SHELL=/bin/zsh
 export PYENV_SHELL=/bin/zsh
+export CUDA_DEVICE_ORDER=PCI_BUS_ID
 
 
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/cuda-10.0/lib64
-export PATH=${PATH}:/opt/cuda-10.0/bin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/tmp2/cuda/cuda-10.0/lib64:/tmp2/cuda/cuda-10.1/lib64:/tmp2/cuda/cudnn-7/
+export PATH=${PATH}:/tmp2/cuda/cuda-10.1/bin:$HOME/google-cloud-sdk/bin/
