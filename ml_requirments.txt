@@ -7,3 +7,6 @@ joblib
 ipython
 pipenv
 ipdb
+jupyterlab
+matplotlib
+pandas
