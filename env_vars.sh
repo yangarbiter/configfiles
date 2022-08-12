@@ -7,8 +7,8 @@ case "$os" in
 	;;
 esac
 export LC_ALL=en_US.UTF-8
-export DOTFILE_BASEDIR=/home/arbiter/configfiles
-export PYENV_ROOT=/home/arbiter/.pyenv
+export DOTFILE_BASEDIR=$HOME/configfiles
+export PYENV_ROOT=$HOME/.pyenv
 export EDITOR=vim
 export SHELL=/bin/zsh
 export PYENV_SHELL=/bin/zsh
