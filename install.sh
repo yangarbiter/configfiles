@@ -65,7 +65,7 @@ elif [ "$1" == pyenv ]; then
   $PYENV_ROOT/bin/pyenv virtualenv-init -
   pyenv update
   if [ "$OS" == 'linux' ]; then
-    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.8.8
+    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.11.2
   else
     env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.8.8 # OSX
   fi
@@ -82,6 +82,7 @@ elif [ "$1" == zsh ]; then
   # upgrade_oh_my_zsh
   cp ${BASEDIR}/yyy.zsh-theme ~/.oh-my-zsh/custom/themes/
   cp ${BASEDIR}/oh-my-zshrc ~/.zshrc
+  link_and_rm ${BASEDIR}/.zprofile ~/.zprofile
   ~/.fzf/install
   echo "installed zsh."
 

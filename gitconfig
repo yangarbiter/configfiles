@@ -20,7 +20,7 @@
 	diff =
 
 [user]
-	name = yangarbiter
+	name = Yao-Yuan Yang
 	email = yangarbiter@gmail.com
 
 [push]
@@ -41,5 +41,6 @@
 	current = yellow reverse
 	local = yellow
 	remote = green
+
 [core]
 	editor = /usr/bin/vim
