@@ -65,9 +65,9 @@ elif [ "$1" == pyenv ]; then
   $PYENV_ROOT/bin/pyenv virtualenv-init -
   pyenv update
   if [ "$OS" == 'linux' ]; then
-    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.11.2
+    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.11.3
   else
-    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.8.8 # OSX
+    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.11.3 # OSX
   fi
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
   echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.env_vars.sh
@@ -131,6 +131,7 @@ else
 
   link_and_rm ${BASEDIR}/screenrc ~/.screenrc
   link_and_rm ${BASEDIR}/tmux.conf ~/.tmux.conf
+  link_and_rm ${BASEDIR}/inputrc ~/.inputrc
 
   GIT_COMPLET_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
   wget $GIT_COMPLET_URL -O $BASEDIR/git-completion.bash
