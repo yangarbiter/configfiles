@@ -23,6 +23,12 @@
 	name = Yao-Yuan Yang
 	email = yangarbiter@gmail.com
 
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
 [push]
 	# Use the Git 1.x.x default to avoid errors on machines with old Git
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
@@ -44,3 +50,11 @@
 
 [core]
 	editor = /usr/bin/vim
+	excludesfile = /Users/arbiter/.gitignore_global
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[rebase]
+	autoStash = true
