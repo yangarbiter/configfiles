@@ -371,7 +371,6 @@ endfunction
 "Run Python Script
 autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead *.py nmap <F5> :!python2 %<CR>
 autocmd BufRead *.py nmap <F6> :!python3 %<CR>
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py set go+=b

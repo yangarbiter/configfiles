@@ -47,7 +47,7 @@ if [ "$1" == vscode ]; then
     link_and_bak ${BASEDIR}/vscode/snippets "${vssnippet}"
     vskey=$HOME/Library/Application\ Support/Code/User/keybindings.json
     link_and_bak ${BASEDIR}/vscode/keybindings.json "${vskey}"
-  elif [ "$OS" == mac ]; then
+  elif [ "$OS" == linux ]; then
     vssettings=$HOME/.config/Code/User/settings.json
     link_and_bak ${BASEDIR}/vscode/settings.json "${vssettings}"
     vssnippet=$HOME/.config/Code/User/snippets
@@ -77,7 +77,7 @@ elif [ "$1" == pyenv ]; then
 
 elif [ "$1" == zsh ]; then
   # install oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   # uninstall_oh_my_zsh
   # upgrade_oh_my_zsh
   cp ${BASEDIR}/yyy.zsh-theme ~/.oh-my-zsh/custom/themes/
