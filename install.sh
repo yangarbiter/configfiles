@@ -47,6 +47,13 @@ if [ "$1" == vscode ]; then
     link_and_bak ${BASEDIR}/vscode/snippets "${vssnippet}"
     vskey=$HOME/Library/Application\ Support/Code/User/keybindings.json
     link_and_bak ${BASEDIR}/vscode/keybindings.json "${vskey}"
+
+    agsettings=$HOME/Library/Application\ Support/Antigravity/User/settings.json
+    link_and_bak ${BASEDIR}/vscode/settings.json "${agsettings}"
+    agsnippet=$HOME/Library/Application\ Support/Antigravity/User/snippets
+    link_and_bak ${BASEDIR}/vscode/snippets "${agsnippet}"
+    agkey=$HOME/Library/Application\ Support/Antigravity/User/keybindings.json
+    link_and_bak ${BASEDIR}/vscode/keybindings.json "${agkey}"
   elif [ "$OS" == linux ]; then
     vssettings=$HOME/.config/Code/User/settings.json
     link_and_bak ${BASEDIR}/vscode/settings.json "${vssettings}"
@@ -65,9 +72,9 @@ elif [ "$1" == pyenv ]; then
   $PYENV_ROOT/bin/pyenv virtualenv-init -
   pyenv update
   if [ "$OS" == 'linux' ]; then
-    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.11.3
+    env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.14.3
   else
-    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.11.3 # OSX
+    env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.14.3 # OSX
   fi
   echo "export PYENV_ROOT=$PYENV_ROOT" >> ~/.env_vars.sh
   echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.env_vars.sh

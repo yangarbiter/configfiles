@@ -1,52 +1,77 @@
 // Place your settings in this file to overwrite the default settings
 {
   "keyboard.dispatch": "keyCode",
-  "terminal.integrated.shellArgs.linux": ["--login"],
-  "terminal.integrated.shellArgs.osx": ["--login"],
-  "telemetry.enableCrashReporter": false,
+  "terminal.integrated.shellArgs.linux": [
+    "--login"
+  ],
+  "terminal.integrated.shellArgs.osx": [
+    "--login"
+  ],
   "terminal.integrated.scrollback": 3000,
-
   "vim.leader": "<space>",
   "vim.easymotion": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before":["<leader>", "w"],
-      "after":[],
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "after": [],
       "commands": [
-        {"command": ":w!"}
+        {
+          "command": ":w!"
+        }
       ]
     },
     {
-      "before":["<leader>", "q"],
-      "after":[],
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "after": [],
       "commands": [
-        {"command": ":q"}
+        {
+          "command": ":q"
+        }
       ]
     },
     {
-      "before":["<leader>", "g"],
-      "after":[],
+      "before": [
+        "<leader>",
+        "g"
+      ],
+      "after": [],
       "commands": [
         "editor.action.goToDeclaration"
       ]
     },
     {
-      "before":["<leader>", "t"],
-      "after":[],
+      "before": [
+        "<leader>",
+        "t"
+      ],
+      "after": [],
       "commands": [
         "workbench.action.quickOpen"
       ]
     },
     {
-      "before":["<leader>", "d"],
-      "after":[],
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [],
       "commands": [
         "editor.action.goToImplementation"
       ]
     },
     {
-      "before":["<leader>", "r", "f"],
-      "after":[],
+      "before": [
+        "<leader>",
+        "r",
+        "f"
+      ],
+      "after": [],
       "commands": [
         "editor.action.referenceSearch.trigger"
       ]
@@ -54,62 +79,59 @@
   ],
   "vim.history": 300,
   "vim.hlsearch": true,
-
   "[tex]": {
     "cSpell.ignoreRegExpList": [
       "\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?",
       "\\$.+?\\$"
-    ] 
+    ]
   },
   "python.venvPath": "~/.pyenv",
-  "python.pythonPath": "$HOME/.pyenv/versions/3.6.5/bin/python",
   "python.jediEnabled": true,
   "[python]": {},
-
   "typescript.check.npmIsInstalled": false,
-
   "explorer.confirmDelete": false,
-
   "git.autofetch": true,
-
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.toolchain": [
-  {
-    "command": "pdflatex",
-    "args": [
-      "-synctex=1",
-      "-interaction=nonstopmode",
-      "-file-line-error",
-      "%DOC%"
-    ]
-  }, {
-    "command": "bibtex",
-    "args": [
-      "%DOCFILE%"
-    ]
-  }, {
-    "command": "pdflatex",
-    "args": [
-      "-synctex=1",
-      "-interaction=nonstopmode",
-      "-file-line-error",
-      "%DOC%"
-    ]
-  }, {
-    "command": "pdflatex",
-    "args": [
-      "-synctex=1",
-      "-interaction=nonstopmode",
-      "-file-line-error",
-      "%DOC%"
-    ]
-  }
+    {
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
   ],
   "latex-workshop.message.update.show": false,
   "[latex]": {
     "editor.tabSize": 2
-  }
-
+  },
+  "claudeCode.preferredLocation": "sidebar",
   "cSpell.maxNumberOfProblems": 1000,
   "cSpell.userWords": [
     "proba"
